@@ -32,13 +32,3 @@ The interceptor shows how to use gRPC interceptors on the client and server. The
 * Using a client interceptor
 * Creating a server interceptor
 * Using a server interceptor
-
-## [Ticketer](./Ticketer)
-
-The ticketer shows how to use gRPC with [authentication and authorization in ASP.NET Core](https://docs.microsoft.com/aspnet/core/security). This example has a gRPC method marked with an `[Authorize]` attribute. The client can only call the method if it has been authenticated by the server and passes a valid JWT token with the gRPC call.
-
-##### Scenarios:
-
-* JSON web token authentication
-* Send JWT token with call
-* Authorization with `[Authorize]` on service
