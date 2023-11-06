@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+option csharp_namespace = "GrpcGreeter.Protos";
+
+// student service definitions
+service RemoteStudent {
+    rpc GetStudentInfo (StudentLookupModel) returns (StudentModel);
+}
+
+// request message containing the students identifier
+message StudentLookupModel {
+    int32 studentId = 1;
+}
+
+// response message containing the students details
+message StudentModel {
+    int32 studentId = 1;
+    string firstName = 2;
+    string lastName = 3;
+    string school = 4;
+}
