@@ -1,6 +1,4 @@
-﻿### Contribute ###
-
-# gRPC for .NET Examples
+﻿# gRPC for .NET Examples
 
 Examples of basic gRPC scenarios with gRPC for .NET.
 
@@ -32,3 +30,7 @@ The interceptor shows how to use gRPC interceptors on the client and server. The
 * Using a client interceptor
 * Creating a server interceptor
 * Using a server interceptor
+
+### Contribute ###
+
+Contributions are welcome!

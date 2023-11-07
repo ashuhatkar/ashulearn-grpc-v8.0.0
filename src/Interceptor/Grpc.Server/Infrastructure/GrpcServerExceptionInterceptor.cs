@@ -23,6 +23,27 @@ namespace Grpc.Server.Infrastructure
 
         #endregion
 
+        #region Utilities
+
+        private void LogCall<TRequest, TResponse>(MethodType methodType, ServerCallContext context)
+            where TRequest : class
+            where TResponse : class
+        {
+            _logger.LogWarning($"Starting call. Type: {methodType}. Request: {typeof(TRequest)}. Response: {typeof(TResponse)}");
+
+            writeMetadata(context.RequestHeaders, "caller-user");
+            writeMetadata(context.RequestHeaders, "caller-machine");
+            writeMetadata(context.RequestHeaders, "caller-os");
+
+            void writeMetadata(Metadata headers, string key)
+            {
+                var headerValue = headers.GetValue(key) ?? "(unknown)";
+                _logger.LogWarning($"{key}: {headerValue}");
+            }
+        }
+
+        #endregion
+
         #region Methods
 
         public override async Task<TResponse> UnaryServerHandler<TRequest, TResponse>(TRequest request,
@@ -44,7 +65,8 @@ namespace Grpc.Server.Infrastructure
             }
         }
 
-        public override Task<TResponse> ClientStreamingServerHandler<TRequest, TResponse>(IAsyncStreamReader<TRequest> requestStream,
+        public override Task<TResponse> ClientStreamingServerHandler<TRequest, TResponse>(
+            IAsyncStreamReader<TRequest> requestStream,
             ServerCallContext context,
             ClientStreamingServerMethod<TRequest, TResponse> continuation)
         {
@@ -68,23 +90,6 @@ namespace Grpc.Server.Infrastructure
         {
             LogCall<TRequest, TResponse>(MethodType.DuplexStreaming, context);
             return base.DuplexStreamingServerHandler(requestStream, responseStream, context, continuation);
-        }
-
-        private void LogCall<TRequest, TResponse>(MethodType methodType, ServerCallContext context)
-            where TRequest : class
-            where TResponse : class
-        {
-            _logger.LogWarning($"Starting call. Type: {methodType}. Request: {typeof(TRequest)}. Response: {typeof(TResponse)}");
-
-            writeMetadata(context.RequestHeaders, "caller-user");
-            writeMetadata(context.RequestHeaders, "caller-machine");
-            writeMetadata(context.RequestHeaders, "caller-os");
-
-            void writeMetadata(Metadata headers, string key)
-            {
-                var headerValue = headers.GetValue(key) ?? "(unknown)";
-                _logger.LogWarning($"{key}: {headerValue}");
-            }
         }
 
         #endregion

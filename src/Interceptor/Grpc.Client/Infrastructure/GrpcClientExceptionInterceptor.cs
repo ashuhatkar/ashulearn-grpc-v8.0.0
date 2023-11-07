@@ -26,6 +26,37 @@ namespace Grpc.Client.Infrastructure
 
         #endregion
 
+        #region Utilities
+
+        private async Task<TResponse> HandleResponse<TResponse>(Task<TResponse> task)
+        {
+            try
+            {
+                var response = await task;
+                _logger.LogInformation($"Response received: {response}");
+                return response;
+            }
+            catch (RpcException ex)
+            {
+                LogError(ex);
+                return default;
+            }
+        }
+
+        private void LogCall<TRequest, TResponse>(Method<TRequest, TResponse> method)
+            where TRequest : class
+            where TResponse : class
+        {
+            _logger.LogInformation($"Starting call. Name: {method.Name}. Type: {method.Type}. Request: {typeof(TRequest)}. Response: {typeof(TResponse)}");
+        }
+
+        private void LogError(RpcException ex)
+        {
+            _logger.LogError(ex, "Error calling via gRPC: {message}, {status}", ex.Message, ex.Status);
+        }
+
+        #endregion
+
         #region Methods
 
         public override AsyncUnaryCall<TResponse> AsyncUnaryCall<TRequest, TResponse>(TRequest request,
@@ -44,21 +75,6 @@ namespace Grpc.Client.Infrastructure
             {
                 LogError(ex);
                 throw;
-            }
-        }
-
-        private async Task<TResponse> HandleResponse<TResponse>(Task<TResponse> task)
-        {
-            try
-            {
-                var response = await task;
-                _logger.LogInformation($"Response received: {response}");
-                return response;
-            }
-            catch (RpcException ex)
-            {
-                LogError(ex);
-                return default;
             }
         }
 
@@ -128,18 +144,6 @@ namespace Grpc.Client.Infrastructure
                 LogError(ex);
                 throw;
             }
-        }
-
-        private void LogCall<TRequest, TResponse>(Method<TRequest, TResponse> method)
-            where TRequest : class
-            where TResponse : class
-        {
-            _logger.LogInformation($"Starting call. Name: {method.Name}. Type: {method.Type}. Request: {typeof(TRequest)}. Response: {typeof(TResponse)}");
-        }
-
-        private void LogError(RpcException ex)
-        {
-            _logger.LogError(ex, "Error calling via gRPC: {message}, {status}", ex.Message, ex.Status);
         }
 
         #endregion
