@@ -1,8 +1,8 @@
-# BRANCH GUIDE
+## BRANCH GUIDE
 
 Following are the most important branches:
 
-> develop - Contains the latest code and it the branch actively developed. Note that all PRs mush be against the develop branch to be considered. This branch is developed using .NET 7
+> develop: Contains the latest code **and it the branch actively developed**. Note that **all PRs mush be against the develop branch to be considered**. This branch is developed using .NET 7
 
 The main branch contains the old code base and will get obsolete in the future. So it's recommended to refer to different tags to avoid any confusion.
 
