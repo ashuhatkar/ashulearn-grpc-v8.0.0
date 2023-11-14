@@ -12,7 +12,7 @@ The greeter shows how to create unary (non-streaming) gRPC methods in ASP.NET Co
 
 - Unary call
 
-## [GrpcDb]
+## [GrpcDb](../tree/main/src/GrpcDb)
 
 The grpcdb shows how to create database unary (non-streaming) gRPC methods in ASP.NET Core, and call them from a client.
 
