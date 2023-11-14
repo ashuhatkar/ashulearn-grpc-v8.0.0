@@ -4,7 +4,7 @@ Examples of basic gRPC scenarios with gRPC for .NET.
 
 If you are brand new to gRPC on .NET a good place to start is the getting started tutorial: [Create a gRPC client and server in ASP.NET Core](https://docs.microsoft.com/aspnet/core/tutorials/grpc/grpc-start)
 
-## [Greeter](./Greeter)
+## [Greeter](https://github.com/ashuhatkar/ashulearn-grpc-v7.0.0/tree/main/src/Greeter)
 
 The greeter shows how to create unary (non-streaming) gRPC methods in ASP.NET Core, and call them from a client.
 
@@ -20,7 +20,7 @@ The grpcdb shows how to create database unary (non-streaming) gRPC methods in AS
 
 - Unary call
 
-## [Interceptor](./Interceptor)
+## [Interceptor](https://github.com/ashuhatkar/ashulearn-grpc-v7.0.0/tree/main/src/Interceptor)
 
 The interceptor shows how to use gRPC interceptors on the client and server. The client interceptor adds additional metadata to each call and the server interceptor logs that metadata on the server.
 
