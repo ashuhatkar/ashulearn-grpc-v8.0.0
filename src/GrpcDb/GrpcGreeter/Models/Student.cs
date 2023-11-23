@@ -1,4 +1,12 @@
-﻿namespace GrpcGreeter.Models
+﻿/*--****************************************************************************
+  --* Project Name    : IssueAPI
+  --* Reference       : NA
+  --* Description     : Represents a student domain entity model
+  --* Configuration Record
+  --* Review            Ver  Author           Date      Cr       Comments
+  --* 001               001  A HATKAR         10/11/23  CR-XXXXX Original
+  --****************************************************************************/
+namespace GrpcGreeter.Models
 {
     /// <summary>
     /// Represents student

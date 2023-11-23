@@ -1,4 +1,12 @@
-﻿using Grpc.Core;
+﻿/*--****************************************************************************
+  --* Project Name    : IssueAPI
+  --* Reference       : Grpc.Core, GrpcGreeter.Data, GrpcGreeter.Protos
+  --* Description     : Represents GrpcGreeter service
+  --* Configuration Record
+  --* Review            Ver  Author           Date      Cr       Comments
+  --* 001               001  A HATKAR         10/11/23  CR-XXXXX Original
+  --****************************************************************************/
+using Grpc.Core;
 using GrpcGreeter.Data;
 using GrpcGreeter.Protos;
 

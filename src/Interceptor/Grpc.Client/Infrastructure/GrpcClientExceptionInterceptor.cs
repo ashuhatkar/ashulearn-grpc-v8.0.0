@@ -1,5 +1,11 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿/*--****************************************************************************
+  --* Project Name    : Interceptor
+  --* Reference       : Grpc.Core, Grpc.Core.Interceptors, Microsoft.Extensions.Logging
+  --* Description     : Represents Grpc client exception interceptor
+  --* Configuration Record
+  --* Review            Ver  Author           Date      Cr       Comments
+  --* 001               001  A HATKAR         10/11/23  CR-XXXXX Original
+  --****************************************************************************/
 using Grpc.Core;
 using Grpc.Core.Interceptors;
 using Microsoft.Extensions.Logging;

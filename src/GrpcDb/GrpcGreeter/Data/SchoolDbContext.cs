@@ -1,8 +1,19 @@
-﻿using GrpcGreeter.Models;
+﻿/*--****************************************************************************
+  --* Project Name    : IssueAPI
+  --* Reference       : GrpcGreeter.Models, Microsoft.EntityFrameworkCore
+  --* Description     : Represents DbContext
+  --* Configuration Record
+  --* Review            Ver  Author           Date      Cr       Comments
+  --* 001               001  A HATKAR         10/11/23  CR-XXXXX Original
+  --****************************************************************************/
+using GrpcGreeter.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace GrpcGreeter.Data
 {
+    /// <summary>
+    /// Represents a DbContext
+    /// </summary>
     public class SchoolDbContext : DbContext
     {
         public SchoolDbContext(DbContextOptions options) : base(options) { }
